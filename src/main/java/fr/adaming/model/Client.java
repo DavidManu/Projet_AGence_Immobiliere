@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue(value="clients")
@@ -66,7 +67,7 @@ public class Client extends Personne {
 	//-----Associations-----//
 
 	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
 	private Conseiller conseiller;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
@@ -75,10 +76,7 @@ public class Client extends Personne {
 		inverseJoinColumns=@JoinColumn(name="id_visite"))
 	private List<Visite> listeVisites;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="client_contrat",
-		joinColumns=@JoinColumn(name="id_personne"),
-		inverseJoinColumns=@JoinColumn(name="id_contrat"))
+	@OneToMany(mappedBy="client", cascade=CascadeType.ALL)
 	private List<Contrat> listeContrats;
 	
 	//-----Getters et Setters-----//

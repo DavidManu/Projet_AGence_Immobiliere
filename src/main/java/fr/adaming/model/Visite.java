@@ -47,7 +47,7 @@ public class Visite implements Serializable {
 	private List<Bien> listeBiens;
 	
 	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
 	private Conseiller conseiller;
 	
 	//-----Constructeurs-----//

@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -42,14 +43,16 @@ public class Contrat implements Serializable {
 	
 	//-----Associations-----//
 	
-	@ManyToMany(mappedBy="listeContrats")
-	private List<Client> listeClients;
+	@ManyToOne
+	@JoinColumn(name="client_id", referencedColumnName="id_personne")
+	private Client client;
 	
-	@ManyToMany(mappedBy="listeContrats")
-	private List<Bien> listeBiens;
+	@OneToOne
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	private Bien bien;
 	
 	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
 	private Conseiller conseiller;
 	
 	//-----Constructeurs-----//
@@ -128,31 +131,31 @@ public class Contrat implements Serializable {
 	}
 
 	/**
-	 * @return the listeClients
+	 * @return the client
 	 */
-	public List<Client> getListeClients() {
-		return listeClients;
+	public Client getClient() {
+		return client;
 	}
 
 	/**
-	 * @param listeClients the listeClients to set
+	 * @param client the client to set
 	 */
-	public void setListeClients(List<Client> listeClients) {
-		this.listeClients = listeClients;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	/**
-	 * @return the listeBiens
+	 * @return the bien
 	 */
-	public List<Bien> getListeBiens() {
-		return listeBiens;
+	public Bien getBien() {
+		return bien;
 	}
 
 	/**
-	 * @param listeBiens the listeBiens to set
+	 * @param bien the bien to set
 	 */
-	public void setListeBiens(List<Bien> listeBiens) {
-		this.listeBiens = listeBiens;
+	public void setBien(Bien bien) {
+		this.bien = bien;
 	}
 
 	/**

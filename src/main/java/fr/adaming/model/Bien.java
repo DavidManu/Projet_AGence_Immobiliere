@@ -24,13 +24,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="biens")
 @DiscriminatorValue(value="biens")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="genre")
 
 /**
  * @author INTI-0366
@@ -61,8 +65,9 @@ public class Bien implements Serializable {
 	
 	@Embedded
 	private Adresse adresse;
-	
-	@Embedded
+
+	@ManyToOne
+	@JoinColumn(name="classeSt_id", referencedColumnName="id_classeSt")
 	private ClasseStandard classeStandard;
 	
 	@ManyToOne
@@ -79,11 +84,8 @@ public class Bien implements Serializable {
 		inverseJoinColumns=@JoinColumn(name="id_visite"))
 	private List<Visite> listeVisites;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="client_contrat",
-		joinColumns=@JoinColumn(name="id_bien"),
-		inverseJoinColumns=@JoinColumn(name="id_contrat"))
-	private List<Contrat> listeContrats;
+	@OneToOne(mappedBy="bien")
+	private Contrat contrat;
 	
 	//-----Constructeurs-----//
 
@@ -101,9 +103,8 @@ public class Bien implements Serializable {
 	 * @param cadastre
 	 * @param superficie
 	 * @param adresse
-	 * @param classeStandard
 	 */
-	public Bien(Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie, Adresse adresse, ClasseStandard classeStandard) {
+	public Bien(Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie, Adresse adresse) {
 		super();
 		this.dateDispo = dateDispo;
 		this.dateMEL = dateMEL;
@@ -111,7 +112,6 @@ public class Bien implements Serializable {
 		this.cadastre = cadastre;
 		this.superficie = superficie;
 		this.adresse = adresse;
-		this.classeStandard = classeStandard;
 	}
 
 	/**
@@ -122,10 +122,9 @@ public class Bien implements Serializable {
 	 * @param cadastre
 	 * @param superficie
 	 * @param adresse
-	 * @param classeStandard
 	 */
 	public Bien(int id, Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie,
-			Adresse adresse, ClasseStandard classeStandard) {
+			Adresse adresse) {
 		super();
 		this.id = id;
 		this.dateDispo = dateDispo;
@@ -134,7 +133,6 @@ public class Bien implements Serializable {
 		this.cadastre = cadastre;
 		this.superficie = superficie;
 		this.adresse = adresse;
-		this.classeStandard = classeStandard;
 	}
 	
 	//-----Getters et Setters-----//
@@ -280,17 +278,31 @@ public class Bien implements Serializable {
 	}
 
 	/**
-	 * @return the listeContrats
+	 * @return the classeStandard
 	 */
-	public List<Contrat> getListeContrats() {
-		return listeContrats;
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
 	}
 
 	/**
-	 * @param listeContrats the listeContrats to set
+	 * @param classeStandard the classeStandard to set
 	 */
-	public void setListeContrats(List<Contrat> listeContrats) {
-		this.listeContrats = listeContrats;
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
+	}
+
+	/**
+	 * @return the contrat
+	 */
+	public Contrat getContrat() {
+		return contrat;
+	}
+
+	/**
+	 * @param contrat the contrat to set
+	 */
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
 	}
 	
 	//-----Methode String-----//

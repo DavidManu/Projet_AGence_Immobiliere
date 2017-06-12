@@ -12,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="locationLocs")
 @DiscriminatorValue(value="location")
 /**
  * @author INTI-0366
@@ -22,11 +24,6 @@ import javax.persistence.InheritanceType;
 public class LocationLoc extends Locaux {
 	
 	//-----Attributs-----//
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_location")
-	private int id;
 	
 	private double caution;
 	private double loyer;
@@ -55,38 +52,8 @@ public class LocationLoc extends Locaux {
 		this.charge = charge;
 		this.guarniture = guarniture;
 	}
-
-	/**
-	 * @param id
-	 * @param caution
-	 * @param loyer
-	 * @param charge
-	 * @param guarniture
-	 */
-	public LocationLoc(int id, double caution, double loyer, double charge, boolean guarniture) {
-		super();
-		this.id = id;
-		this.caution = caution;
-		this.loyer = loyer;
-		this.charge = charge;
-		this.guarniture = guarniture;
-	}
 	
 	//-----Getters et Setters-----//
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the caution
@@ -151,7 +118,7 @@ public class LocationLoc extends Locaux {
 	 */
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", caution=" + caution + ", loyer=" + loyer + ", charge=" + charge
+		return "Location [caution=" + caution + ", loyer=" + loyer + ", charge=" + charge
 				+ ", guarniture=" + guarniture + "]";
 	}
 

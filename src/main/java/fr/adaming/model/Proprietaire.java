@@ -67,7 +67,7 @@ public class Proprietaire extends Personne {
 	//-----Associations-----//
 
 	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
 	private Conseiller conseiller;
 	
 	@OneToMany(mappedBy="proprietaire", cascade=CascadeType.ALL)

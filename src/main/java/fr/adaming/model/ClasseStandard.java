@@ -4,10 +4,20 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Embeddable
+@Entity
+@Table(name="classesStandards")
 
 /**
  * @author INTI-0366
@@ -16,6 +26,11 @@ import javax.persistence.Embeddable;
 public class ClasseStandard implements Serializable {
 	
 	//-----Attributs-----//
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_classeSt")
+	private int id;
 	
 	private int prixMin;
 	private int minSurfaceMin;
@@ -30,7 +45,6 @@ public class ClasseStandard implements Serializable {
 		super();
 	}
 
-
 	/**
 	 * @param prixMin
 	 * @param minSurfaceMin
@@ -42,6 +56,11 @@ public class ClasseStandard implements Serializable {
 		this.minSurfaceMin = minSurfaceMin;
 		this.dateConstructionMin = dateConstructionMin;
 	}
+	
+	//-----Associations-----//
+	
+	@OneToMany(mappedBy="classeStandard", cascade=CascadeType.ALL)
+	private List<Bien> listeBiens;
 	
 	//-----Getters et Setters-----//
 
@@ -71,6 +90,34 @@ public class ClasseStandard implements Serializable {
 	 */
 	public void setMinSurfaceMin(int minSurfaceMin) {
 		this.minSurfaceMin = minSurfaceMin;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the listeBiens
+	 */
+	public List<Bien> getListeBiens() {
+		return listeBiens;
+	}
+
+	/**
+	 * @param listeBiens the listeBiens to set
+	 */
+	public void setListeBiens(List<Bien> listeBiens) {
+		this.listeBiens = listeBiens;
 	}
 
 	/**

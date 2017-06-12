@@ -14,11 +14,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="habitations")
 @DiscriminatorValue(value="habitations")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type")
 
 /**
  * @author INTI-0366
@@ -27,11 +28,6 @@ import javax.persistence.InheritanceType;
 public class Habitation extends Bien {
 	
 	//-----Attributs-----//
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_habitation")
-	private int id;
 	
 	private String description;
 	private String type;
@@ -54,34 +50,8 @@ public class Habitation extends Bien {
 		this.description = description;
 		this.type = type;
 	}
-
-	/**
-	 * @param id
-	 * @param description
-	 * @param type
-	 */
-	public Habitation(int id, String description, String type) {
-		super();
-		this.id = id;
-		this.description = description;
-		this.type = type;
-	}
 	
 	//-----Getters et Setters-----//
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the description
@@ -118,7 +88,7 @@ public class Habitation extends Bien {
 	 */
 	@Override
 	public String toString() {
-		return "Habitation [id=" + id + ", description=" + description + ", type=" + type + "]";
+		return "Habitation [description=" + description + ", type=" + type + "]";
 	}
 
 }

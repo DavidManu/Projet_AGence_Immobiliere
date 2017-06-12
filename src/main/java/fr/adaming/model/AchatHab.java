@@ -12,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="achatHabs")
 @DiscriminatorValue(value="achat")
 /**
  * @author INTI-0366
@@ -22,11 +24,6 @@ import javax.persistence.InheritanceType;
 public class AchatHab extends Habitation {
 	
 	//-----Attributs-----//
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_achat")
-	private int id;
 	
 	private double prix;
 	
@@ -50,20 +47,6 @@ public class AchatHab extends Habitation {
 	//-----Getters et Setters-----//
 
 	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
 	 * @return the prix
 	 */
 	public double getPrix() {
@@ -84,7 +67,7 @@ public class AchatHab extends Habitation {
 	 */
 	@Override
 	public String toString() {
-		return "AchatHab [id=" + id + ", prix=" + prix + "]";
+		return "AchatHab [prix=" + prix + "]";
 	}
 
 }
