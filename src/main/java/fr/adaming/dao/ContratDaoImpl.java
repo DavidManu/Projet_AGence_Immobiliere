@@ -13,7 +13,7 @@ import fr.adaming.model.Client;
 import fr.adaming.model.Contrat;
 
 /**
- * Classe d'implémentation de l'interface Contrat
+ *  Classe d'implémentation de l'interface Contrat
  */
 
 @Repository

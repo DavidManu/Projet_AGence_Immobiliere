@@ -7,7 +7,7 @@ import fr.adaming.model.Contrat;
 public interface IContratDao {
 
 	/**
-	 * Declaration des methodes
+	 *  Declaration des methodes
 	 */
 	
 	public Contrat createContrat(Contrat c);

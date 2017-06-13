@@ -5,7 +5,7 @@ import java.util.List;
 import fr.adaming.model.Contrat;
 
 /**
- * Declaration des methodes
+ *  Declaration des methodes
  */
 public interface IContratService {
 

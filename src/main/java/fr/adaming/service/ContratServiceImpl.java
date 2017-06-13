@@ -18,7 +18,7 @@ import fr.adaming.model.Contrat;
 public class ContratServiceImpl implements IContratService {
 
 	/**
-	 * Injection de dependance
+	 *  Injection de dependance
 	 */
 	
 	@Autowired

@@ -22,7 +22,7 @@ public class ContratRestController {
 	private IContratService contratService;
 
 	/**
-	 * @return the contratService
+	 * @return  the contratService
 	 */
 	public IContratService getContratService() {
 		return contratService;
