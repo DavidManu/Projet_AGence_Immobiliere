@@ -26,7 +26,12 @@ public class Proprietaire extends Personne {
 	private String typeDeBien;
 	
 	//-----Constructeurs-----//
+	
 
+	public Proprietaire() {
+		super();
+	}
+	
 	/**
 	 * @param typeDeBien
 	 */
@@ -35,6 +40,7 @@ public class Proprietaire extends Personne {
 		this.typeDeBien = typeDeBien;
 	}
 	
+
 	/**
 	 * @param prenom
 	 * @param nom
@@ -89,12 +95,12 @@ public class Proprietaire extends Personne {
 		this.typeDeBien = typeDeBien;
 	}
 
-	/**
-	 * @return the conseiller
-	 */
-	public Conseiller getConseiller() {
-		return conseiller;
-	}
+//	/**
+//	 * @return the conseiller
+//	 */
+//	public Conseiller getConseiller() {
+//		return conseiller;
+//	}
 
 	/**
 	 * @return the listeBiens
@@ -110,12 +116,12 @@ public class Proprietaire extends Personne {
 		this.listeBiens = listeBiens;
 	}
 
-	/**
-	 * @param conseiller the conseiller to set
-	 */
-	public void setConseiller(Conseiller conseiller) {
-		this.conseiller = conseiller;
-	}
+//	/**
+//	 * @param conseiller the conseiller to set
+//	 */
+//	public void setConseiller(Conseiller conseiller) {
+//		this.conseiller = conseiller;
+//	}
 	
 	//-----Methode String-----//
 
