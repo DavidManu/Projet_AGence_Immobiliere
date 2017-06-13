@@ -1,10 +1,10 @@
-package fr.adaming.service;
+package fr.adaming.dao;
 
 import java.util.List;
 
 import fr.adaming.model.Client;
 
-public interface IClientService {
+public interface IClientDao {
 	
 	/**
 	 * Declaration des methodes
@@ -20,5 +20,7 @@ public interface IClientService {
 		
 	public void deleteClient(int id);	
 	
+	
+
 
 }
