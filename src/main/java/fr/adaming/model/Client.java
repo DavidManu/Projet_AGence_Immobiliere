@@ -72,7 +72,7 @@ public class Client extends Personne {
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="client_visite",
-		joinColumns=@JoinColumn(name="id_personne"),
+		joinColumns=@JoinColumn(name="id_client"),
 		inverseJoinColumns=@JoinColumn(name="id_visite"))
 	private List<Visite> listeVisites;
 	
@@ -129,19 +129,20 @@ public class Client extends Personne {
 //	public Conseiller getConseiller() {
 //		return conseiller;
 //	}
-//
-//	/**
-//	 * @param conseiller the conseiller to set
-//	 */
-//	public void setConseiller(Conseiller conseiller) {
-//		this.conseiller = conseiller;
-//	}
+
+	/**
+	 * @param conseiller the conseiller to set
+	 */
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
 	
 	//-----Methode String-----//
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	
 	@Override
 	public String toString() {
 		return "Client [typeDeBien=" + typeDeBien + "]";

@@ -47,8 +47,8 @@ public class ClientRestController {
 		return clientService.getClientById(id);
 	}
 
-	@RequestMapping(value = "/supprimer/{pId}", method = RequestMethod.DELETE, produces = "application/json")
-	public void deleteClient(@PathVariable("pId") int id) {
+	@RequestMapping(value = "/supprimer", method = RequestMethod.DELETE, produces = "application/json")
+	public void deleteClient(@RequestParam("pId") int id) {
 
 		clientService.deleteClient(id);
 	}
