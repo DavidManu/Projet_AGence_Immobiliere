@@ -50,13 +50,13 @@ public class ContratRestController {
 		return contratService.updateContrat(c);
 	}
 	
-	@RequestMapping(value = "/supprimer/{pId}", method = RequestMethod.DELETE, produces = "application/json")
-	public void deleteContrat(@PathVariable("pId") int id) {
+	@RequestMapping(value = "/supprimer/{cId}", method = RequestMethod.DELETE, produces = "application/json")
+	public void deleteContrat(@PathVariable("cId") int id) {
 		contratService.deleteContrat(id);
 	}
 	
-	@RequestMapping(value = "/contrat/{pId}", method = RequestMethod.GET, produces = "application/json")
-	public Contrat getContratById(@PathVariable("pId") int id) {
+	@RequestMapping(value = "/contrat/{cId}", method = RequestMethod.GET, produces = "application/json")
+	public Contrat getContratById(@PathVariable("cId") int id) {
 		return contratService.getContratById(id);
 	}
 }
