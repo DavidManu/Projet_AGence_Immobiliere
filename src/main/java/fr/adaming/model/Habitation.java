@@ -4,6 +4,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -42,11 +43,36 @@ public class Habitation extends Bien {
 	}
 
 	/**
+	 * @param dateDispo
+	 * @param dateMEL
+	 * @param photo
+	 * @param cadastre
+	 * @param superficie
+	 * @param adresse
 	 * @param description
 	 * @param type
 	 */
-	public Habitation(String description, String type) {
-		super();
+	public Habitation(Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie, Adresse adresse,
+			String description, String type) {
+		super(dateDispo, dateMEL, photo, cadastre, superficie, adresse);
+		this.description = description;
+		this.type = type;
+	}
+
+	/**
+	 * @param id
+	 * @param dateDispo
+	 * @param dateMEL
+	 * @param photo
+	 * @param cadastre
+	 * @param superficie
+	 * @param adresse
+	 * @param description
+	 * @param type
+	 */
+	public Habitation(int id, Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie,
+			Adresse adresse, String description, String type) {
+		super(id, dateDispo, dateMEL, photo, cadastre, superficie, adresse);
 		this.description = description;
 		this.type = type;
 	}

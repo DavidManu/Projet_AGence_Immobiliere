@@ -3,6 +3,8 @@
  */
 package fr.adaming.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
@@ -37,10 +39,37 @@ public class AchatHab extends Habitation {
 	}
 
 	/**
+	 * @param dateDispo
+	 * @param dateMEL
+	 * @param photo
+	 * @param cadastre
+	 * @param superficie
+	 * @param adresse
+	 * @param description
+	 * @param type
 	 * @param prix
 	 */
-	public AchatHab(double prix) {
-		super();
+	public AchatHab(Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie, Adresse adresse,
+			String description, String type, double prix) {
+		super(dateDispo, dateMEL, photo, cadastre, superficie, adresse, description, type);
+		this.prix = prix;
+	}
+
+	/**
+	 * @param id
+	 * @param dateDispo
+	 * @param dateMEL
+	 * @param photo
+	 * @param cadastre
+	 * @param superficie
+	 * @param adresse
+	 * @param description
+	 * @param type
+	 * @param prix
+	 */
+	public AchatHab(int id, Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie,
+			Adresse adresse, String description, String type, double prix) {
+		super(id, dateDispo, dateMEL, photo, cadastre, superficie, adresse, description, type);
 		this.prix = prix;
 	}
 	

@@ -4,6 +4,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -41,11 +42,36 @@ public class Locaux extends Bien {
 	}
 
 	/**
+	 * @param dateDispo
+	 * @param dateMEL
+	 * @param photo
+	 * @param cadastre
+	 * @param superficie
+	 * @param adresse
 	 * @param description
 	 * @param type
 	 */
-	public Locaux(String description, String type) {
-		super();
+	public Locaux(Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie, Adresse adresse,
+			String description, String type) {
+		super(dateDispo, dateMEL, photo, cadastre, superficie, adresse);
+		this.description = description;
+		this.type = type;
+	}
+
+	/**
+	 * @param id
+	 * @param dateDispo
+	 * @param dateMEL
+	 * @param photo
+	 * @param cadastre
+	 * @param superficie
+	 * @param adresse
+	 * @param description
+	 * @param type
+	 */
+	public Locaux(int id, Date dateDispo, Date dateMEL, byte[] photo, String cadastre, double superficie,
+			Adresse adresse, String description, String type) {
+		super(id, dateDispo, dateMEL, photo, cadastre, superficie, adresse);
 		this.description = description;
 		this.type = type;
 	}

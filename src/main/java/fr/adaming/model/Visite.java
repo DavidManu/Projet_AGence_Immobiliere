@@ -37,6 +37,8 @@ public class Visite implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	private Date dateVisite;
+	private boolean clientAccepte;
+	private boolean conseillerAccepte;
 	
 	//-----Associations-----//
 	
@@ -61,20 +63,28 @@ public class Visite implements Serializable {
 
 	/**
 	 * @param dateVisite
+	 * @param clientAccepte
+	 * @param conseillerAccepte
 	 */
-	public Visite(Date dateVisite) {
+	public Visite(Date dateVisite, boolean clientAccepte, boolean conseillerAccepte) {
 		super();
 		this.dateVisite = dateVisite;
+		this.clientAccepte = clientAccepte;
+		this.conseillerAccepte = conseillerAccepte;
 	}
 
 	/**
 	 * @param id
 	 * @param dateVisite
+	 * @param clientAccepte
+	 * @param conseillerAccepte
 	 */
-	public Visite(int id, Date dateVisite) {
+	public Visite(int id, Date dateVisite, boolean clientAccepte, boolean conseillerAccepte) {
 		super();
 		this.id = id;
 		this.dateVisite = dateVisite;
+		this.clientAccepte = clientAccepte;
+		this.conseillerAccepte = conseillerAccepte;
 	}
 	
 	//-----Getters et Setters-----//
@@ -91,6 +101,34 @@ public class Visite implements Serializable {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the clientAccepte
+	 */
+	public boolean isClientAccepte() {
+		return clientAccepte;
+	}
+
+	/**
+	 * @param clientAccepte the clientAccepte to set
+	 */
+	public void setClientAccepte(boolean clientAccepte) {
+		this.clientAccepte = clientAccepte;
+	}
+
+	/**
+	 * @return the conseillerAccepte
+	 */
+	public boolean isConseillerAccepte() {
+		return conseillerAccepte;
+	}
+
+	/**
+	 * @param conseillerAccepte the conseillerAccepte to set
+	 */
+	public void setConseillerAccepte(boolean conseillerAccepte) {
+		this.conseillerAccepte = conseillerAccepte;
 	}
 
 	/**
