@@ -54,12 +54,12 @@ public class BienRestController {
 		return biService.getAllPropertyByAdviser(id);
 	}
 	
-	@RequestMapping(value="/BiensIDad", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/BiensIDowad", method=RequestMethod.GET, produces="application/json")
 	public List<Bien> getAllPropertyByOwnerAndAdviser(@RequestParam("pIdp") int idp, @RequestParam("pIdco") int idco){
 		return biService.getAllPropertyByOwnerAndAdviser(idp, idco);
 	}
 	
-	@RequestMapping(value="/BiensIDad", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/BiensIDcuad", method=RequestMethod.GET, produces="application/json")
 	public List<Bien> getAllPropertyByCustomerAndAdviser(@RequestParam("pIdcl") int idcl, @RequestParam("pIdco") int idco){
 		return biService.getAllPropertyByCustomerAndAdviser(idcl, idco);
 	}
@@ -81,7 +81,7 @@ public class BienRestController {
 		return b;
 	}
 	
-	@RequestMapping(value="/Bien", method=RequestMethod.DELETE, produces="application/json")
+	@RequestMapping(value="/deleteBien", method=RequestMethod.DELETE, produces="application/json")
 	public void deleteProperty(@RequestParam("pId") int id){
 		Bien b=biService.getPropertyByID(id);
 		Client cl=new Client();
