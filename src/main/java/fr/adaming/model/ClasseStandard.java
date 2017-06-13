@@ -13,31 +13,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="classesStandards")
+@Table(name = "classesStandards")
 
 /**
  * @author INTI-0366
  *
  */
 public class ClasseStandard implements Serializable {
-	
-	//-----Attributs-----//
-	
+
+	// -----Attributs-----//
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_classeSt")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_classeSt")
 	private int id;
-	
+
 	private int prixMin;
 	private int minSurfaceMin;
 	private int dateConstructionMin;
-	
-	//-----Constructeurs-----//
-	
+
+	@OneToMany(mappedBy = "classeStandard")
+	private List<Client> listeClients;
+
+	// -----Constructeurs-----//
+
 	/**
 	 * 
 	 */
@@ -56,13 +61,13 @@ public class ClasseStandard implements Serializable {
 		this.minSurfaceMin = minSurfaceMin;
 		this.dateConstructionMin = dateConstructionMin;
 	}
-	
-	//-----Associations-----//
-	
-	@OneToMany(mappedBy="classeStandard", cascade=CascadeType.ALL)
+
+	// -----Associations-----//
+
+	@OneToMany(mappedBy = "classeStandard", cascade = CascadeType.ALL)
 	private List<Bien> listeBiens;
-	
-	//-----Getters et Setters-----//
+
+	// -----Getters et Setters-----//
 
 	/**
 	 * @return the prixMin
@@ -72,7 +77,8 @@ public class ClasseStandard implements Serializable {
 	}
 
 	/**
-	 * @param prixMin the prixMin to set
+	 * @param prixMin
+	 *            the prixMin to set
 	 */
 	public void setPrixMin(int prixMin) {
 		this.prixMin = prixMin;
@@ -86,10 +92,25 @@ public class ClasseStandard implements Serializable {
 	}
 
 	/**
-	 * @param minSurfaceMin the minSurfaceMin to set
+	 * @param minSurfaceMin
+	 *            the minSurfaceMin to set
 	 */
 	public void setMinSurfaceMin(int minSurfaceMin) {
 		this.minSurfaceMin = minSurfaceMin;
+	}
+
+	/**
+	 * @return the listeClients
+	 */
+//	public List<Client> getListeClients() {
+//		return listeClients;
+//	}
+
+	/**
+	 * @param listeClients the listeClients to set
+	 */
+	public void setListeClients(List<Client> listeClients) {
+		this.listeClients = listeClients;
 	}
 
 	/**
@@ -100,7 +121,8 @@ public class ClasseStandard implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -114,7 +136,8 @@ public class ClasseStandard implements Serializable {
 	}
 
 	/**
-	 * @param listeBiens the listeBiens to set
+	 * @param listeBiens
+	 *            the listeBiens to set
 	 */
 	public void setListeBiens(List<Bien> listeBiens) {
 		this.listeBiens = listeBiens;
@@ -128,7 +151,8 @@ public class ClasseStandard implements Serializable {
 	}
 
 	/**
-	 * @param dateConstructionMin the dateConstructionMin to set
+	 * @param dateConstructionMin
+	 *            the dateConstructionMin to set
 	 */
 	public void setDateConstructionMin(int dateConstructionMin) {
 		this.dateConstructionMin = dateConstructionMin;
