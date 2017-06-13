@@ -3,6 +3,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 
 public interface IClientService {
 	
@@ -12,7 +13,7 @@ public interface IClientService {
 	
 	public Client createClient(Client c);
 	
-	public List<Client> getAllClient();
+	public List<Client> getAllClient(int idco);
 	
 	public Client getClientById(int id);
 	

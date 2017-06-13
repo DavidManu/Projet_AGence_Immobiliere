@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClientDao;
 import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 
 /**
  * @author INTI-0365
@@ -54,8 +55,8 @@ public class ClientServiceImpl implements IClientService {
 	 * Methode Recuperer tout les Clients
 	 */
 	@Override
-	public List<Client> getAllClient() {
-		return clientDao.getAllClient();
+	public List<Client> getAllClient(int idco) {
+		return clientDao.getAllClient(idco);
 	}
 
 	/**

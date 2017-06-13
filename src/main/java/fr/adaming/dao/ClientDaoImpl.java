@@ -5,12 +5,15 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
  * Classe d'implementation de l'interface CLient
  */
 import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
+import fr.adaming.model.Personne;
 
 @Repository
 public class ClientDaoImpl implements IClientDao {
@@ -18,6 +21,7 @@ public class ClientDaoImpl implements IClientDao {
 	/**
 	 * Declaration de la session
 	 */
+	@Autowired
 	private SessionFactory sf;
 
 	/**
@@ -51,10 +55,11 @@ public class ClientDaoImpl implements IClientDao {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Client> getAllClient() {
-		Session s = sf.getCurrentSession();
-		String reqGetAll = "From Client";
+	public List<Client> getAllClient(int idco) {
+		Session s = sf.openSession();
+		String reqGetAll = "From Client as client WHERE client.conseiller.id=:pId";
 		Query query = s.createQuery(reqGetAll);
+		query.setParameter("pId", idco);
 		return query.list();
 	}
 
@@ -68,7 +73,6 @@ public class ClientDaoImpl implements IClientDao {
 		return client_rec;
 	}
 
-	
 	/**
 	 * Methode Modifier un CLient
 	 */
@@ -77,7 +81,6 @@ public class ClientDaoImpl implements IClientDao {
 		Session s = sf.getCurrentSession();
 		Client client_rec = (Client) s.get(Client.class, c.getId());
 		client_rec.setAdresse(c.getAdresse());
-		client_rec.setConseiller(c.getConseiller());
 		client_rec.setListeContrats(c.getListeContrats());
 		client_rec.setListeVisites(c.getListeVisites());
 		client_rec.setNom(c.getNom());

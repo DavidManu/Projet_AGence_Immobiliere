@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 import fr.adaming.service.IClientService;
 
 @RestController
@@ -35,8 +37,8 @@ public class ClientRestController {
 	}
 
 	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
-	public List<Client> getAllClient() {
-		return clientService.getAllClient();
+	public List<Client> getAllClient(@RequestParam("pId") int id) {
+		return clientService.getAllClient(id);
 	}
 
 	@RequestMapping(value = "/Client/{pId}", method = RequestMethod.GET, produces = "application/json")

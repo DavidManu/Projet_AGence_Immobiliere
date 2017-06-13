@@ -126,16 +126,16 @@ public class Client extends Personne {
 	/**
 	 * @return the conseiller
 	 */
-	public Conseiller getConseiller() {
-		return conseiller;
-	}
-
-	/**
-	 * @param conseiller the conseiller to set
-	 */
-	public void setConseiller(Conseiller conseiller) {
-		this.conseiller = conseiller;
-	}
+//	public Conseiller getConseiller() {
+//		return conseiller;
+//	}
+//
+//	/**
+//	 * @param conseiller the conseiller to set
+//	 */
+//	public void setConseiller(Conseiller conseiller) {
+//		this.conseiller = conseiller;
+//	}
 	
 	//-----Methode String-----//
 
