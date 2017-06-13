@@ -87,7 +87,7 @@ public class ClientDaoImpl implements IClientDao {
 		client_rec.setNumPrive(c.getNumPrive());
 		client_rec.setNumTravail(c.getNumTravail());
 		client_rec.setPrenom(c.getPrenom());
-		client_rec.setTypeDeBien(c.getTypeDeBien());
+		client_rec.setClasseStandard(c.getClasseStandard());
 
 		s.saveOrUpdate(client_rec);
 		return client_rec;

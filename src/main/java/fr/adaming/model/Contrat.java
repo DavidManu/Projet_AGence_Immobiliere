@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Contrat implements Serializable {
 	@JoinColumn(name="client_id", referencedColumnName="id_personne")
 	private Client client;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private Bien bien;
 	
@@ -130,12 +131,12 @@ public class Contrat implements Serializable {
 		this.refContrat = refContrat;
 	}
 
-	/**
-	 * @return the client
-	 */
-	public Client getClient() {
-		return client;
-	}
+//	/**
+//	 * @return the client
+//	 */
+//	public Client getClient() {
+//		return client;
+//	}
 
 	/**
 	 * @param client the client to set
@@ -144,12 +145,12 @@ public class Contrat implements Serializable {
 		this.client = client;
 	}
 
-	/**
-	 * @return the bien
-	 */
-	public Bien getBien() {
-		return bien;
-	}
+//	/**
+//	 * @return the bien
+//	 */
+//	public Bien getBien() {
+//		return bien;
+//	}
 
 	/**
 	 * @param bien the bien to set
@@ -158,12 +159,12 @@ public class Contrat implements Serializable {
 		this.bien = bien;
 	}
 
-	/**
-	 * @return the conseiller
-	 */
-	public Conseiller getConseiller() {
-		return conseiller;
-	}
+//	/**
+//	 * @return the conseiller
+//	 */
+//	public Conseiller getConseiller() {
+//		return conseiller;
+//	}
 
 	/**
 	 * @param conseiller the conseiller to set

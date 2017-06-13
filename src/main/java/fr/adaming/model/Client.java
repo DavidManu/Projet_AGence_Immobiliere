@@ -15,19 +15,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-@DiscriminatorValue(value="clients")
+@DiscriminatorValue(value = "clients")
 
 /**
  * @author INTI-0366
  *
  */
 public class Client extends Personne {
-	
-	//-----Attributs-----//
-	
-	private String typeDeBien;
-	
-	//-----Constructeurs-----//
+
+	// -----Attributs-----//
+
+	@ManyToOne
+	@JoinColumn(name="classeSt_id", referencedColumnName="id_classeSt")
+	private ClasseStandard classeStandard;
+
+	// -----Constructeurs-----//
 
 	/**
 	 * 
@@ -35,7 +37,7 @@ public class Client extends Personne {
 	public Client() {
 		super();
 	}
-	
+
 	/**
 	 * @param prenom
 	 * @param nom
@@ -44,9 +46,10 @@ public class Client extends Personne {
 	 * @param adresse
 	 * @param typeDeBien
 	 */
-	public Client(String prenom, String nom, String numTravail, String numPrive, Adresse adresse, String typeDeBien) {
+	public Client(String prenom, String nom, String numTravail, String numPrive, Adresse adresse,
+			ClasseStandard classeStandard) {
 		super(prenom, nom, numTravail, numPrive, adresse);
-		this.typeDeBien = typeDeBien;
+		this.classeStandard = classeStandard;
 	}
 
 	/**
@@ -59,40 +62,39 @@ public class Client extends Personne {
 	 * @param typeDeBien
 	 */
 	public Client(int id, String prenom, String nom, String numTravail, String numPrive, Adresse adresse,
-			String typeDeBien) {
+			ClasseStandard classeStandard) {
 		super(id, prenom, nom, numTravail, numPrive, adresse);
-		this.typeDeBien = typeDeBien;
+		this.classeStandard = classeStandard;
 	}
-	
-	//-----Associations-----//
+
+	// -----Associations-----//
 
 	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
+	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="client_visite",
-		joinColumns=@JoinColumn(name="id_personne"),
-		inverseJoinColumns=@JoinColumn(name="id_visite"))
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "client_visite", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "id_visite"))
 	private List<Visite> listeVisites;
-	
-	@OneToMany(mappedBy="client", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Contrat> listeContrats;
-	
-	//-----Getters et Setters-----//
+
+	// -----Getters et Setters-----//
 
 	/**
 	 * @return the typeDeBien
 	 */
-	public String getTypeDeBien() {
-		return typeDeBien;
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
 	}
 
 	/**
-	 * @param typeDeBien the typeDeBien to set
+	 * @param typeDeBien
+	 *            the typeDeBien to set
 	 */
-	public void setTypeDeBien(String typeDeBien) {
-		this.typeDeBien = typeDeBien;
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
 	}
 
 	/**
@@ -103,7 +105,8 @@ public class Client extends Personne {
 	}
 
 	/**
-	 * @param listeVisites the listeVisites to set
+	 * @param listeVisites
+	 *            the listeVisites to set
 	 */
 	public void setListeVisites(List<Visite> listeVisites) {
 		this.listeVisites = listeVisites;
@@ -117,7 +120,8 @@ public class Client extends Personne {
 	}
 
 	/**
-	 * @param listeContrats the listeContrats to set
+	 * @param listeContrats
+	 *            the listeContrats to set
 	 */
 	public void setListeContrats(List<Contrat> listeContrats) {
 		this.listeContrats = listeContrats;
@@ -126,25 +130,29 @@ public class Client extends Personne {
 	/**
 	 * @return the conseiller
 	 */
-//	public Conseiller getConseiller() {
-//		return conseiller;
-//	}
-//
-//	/**
-//	 * @param conseiller the conseiller to set
-//	 */
-//	public void setConseiller(Conseiller conseiller) {
-//		this.conseiller = conseiller;
-//	}
-	
-	//-----Methode String-----//
+	// public Conseiller getConseiller() {
+	// return conseiller;
+	// }
 
-	/* (non-Javadoc)
+	/**
+	 * @param conseiller
+	 *            the conseiller to set
+	 */
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+
+	// -----Methode String-----//
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
+
 	@Override
 	public String toString() {
-		return "Client [typeDeBien=" + typeDeBien + "]";
+		return "Client [classeStandard=" + classeStandard + "]";
 	}
 
 }
