@@ -38,7 +38,7 @@ public class BienRestController {
 	}
 
 	/**
-	 * @param biService the biService to set
+	 * @param biService the biService to set,
 	 */
 	public void setBiService(IBienService biService) {
 		this.biService = biService;
@@ -66,6 +66,7 @@ public class BienRestController {
 	
 	@RequestMapping(value="/Bien", method=RequestMethod.GET, produces="application/json")
 	public Bien getPropertyByID(@RequestParam("pId") int id){
+		System.out.println();
 		return biService.getPropertyByID(id);
 	}
 	
@@ -83,14 +84,14 @@ public class BienRestController {
 	
 	@RequestMapping(value="/deleteBien", method=RequestMethod.DELETE, produces="application/json")
 	public void deleteProperty(@RequestParam("pId") int id){
-		Bien b=biService.getPropertyByID(id);
-		Client cl=new Client();
-		Proprietaire p=new Proprietaire();
-		Conseiller co=new Conseiller();
-		b.setClient(cl);
-		b.setProprietaire(p);
-		b.setConseiller(co);
-		biService.updateProperty(b);
+//		Bien b=biService.getPropertyByID(id);
+//		Client cl=new Client();
+//		Proprietaire p=new Proprietaire();
+//		Conseiller co=new Conseiller();
+//		b.setClient(cl);
+//		b.setProprietaire(p);
+//		b.setConseiller(co);
+//		biService.updateProperty(b);
 		biService.deleteProperty(id);
 	}
 

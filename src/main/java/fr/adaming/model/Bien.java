@@ -89,7 +89,7 @@ public class Bien implements Serializable {
 		inverseJoinColumns=@JoinColumn(name="id_visite"))
 	private List<Visite> listeVisites;
 	
-	@OneToOne(mappedBy="bien")
+	@OneToOne(mappedBy="bien", fetch=FetchType.EAGER)
 	private Contrat contrat;
 	
 	//-----Constructeurs-----//

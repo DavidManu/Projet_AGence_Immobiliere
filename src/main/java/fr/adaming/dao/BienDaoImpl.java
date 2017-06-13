@@ -52,7 +52,7 @@ public class BienDaoImpl implements IBienDao {
 	@Override
 	public List<Bien> getAllPropertyByOwnerAndAdviser(int id_pr, int id_co) {
 		Session s=sf.openSession();
-		String req="from b select Bien as b where b.proprietaire.id=:pIdpr and b.conseiller.id=:pIdco";
+		String req="from Bien as b where b.proprietaire.id=:pIdpr and b.conseiller.id=:pIdco";
 		Query query=s.createQuery(req);
 		query.setParameter("pIdpr", id_pr);
 		query.setParameter("pIdco", id_co);
@@ -62,7 +62,7 @@ public class BienDaoImpl implements IBienDao {
 	@Override
 	public List<Bien> getAllPropertyByCustomerAndAdviser(int id_cl, int id_co) {
 		Session s=sf.openSession();
-		String req="from b select Bien as b where b.client.id=:pIdcl and b.conseiller.id=:pIdco";
+		String req="from Bien as b where b.client.id=:pIdcl and b.conseiller.id=:pIdco";
 		Query query=s.createQuery(req);
 		query.setParameter("pIdcl", id_cl);
 		query.setParameter("pIdco", id_co);
