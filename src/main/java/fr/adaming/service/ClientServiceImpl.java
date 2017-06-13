@@ -54,8 +54,8 @@ public class ClientServiceImpl implements IClientService {
 	 * Methode Recuperer tout les Clients
 	 */
 	@Override
-	public List<Client> getAllCLient() {
-		return clientDao.getAllCLient();
+	public List<Client> getAllClient() {
+		return clientDao.getAllClient();
 	}
 
 	/**

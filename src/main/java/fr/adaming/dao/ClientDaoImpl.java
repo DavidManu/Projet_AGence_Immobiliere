@@ -51,7 +51,7 @@ public class ClientDaoImpl implements IClientDao {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Client> getAllCLient() {
+	public List<Client> getAllClient() {
 		Session s = sf.getCurrentSession();
 		String reqGetAll = "From Client";
 		Query query = s.createQuery(reqGetAll);

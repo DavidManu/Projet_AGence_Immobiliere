@@ -12,7 +12,7 @@ public interface IClientDao {
 	
 	public Client createClient(Client c);
 	
-	public List<Client> getAllCLient();
+	public List<Client> getAllClient();
 	
 	public Client getClientById(int id);
 	
