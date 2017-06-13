@@ -14,6 +14,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -75,10 +76,14 @@ public class Bien implements Serializable {
 	private Conseiller conseiller;
 	
 	@ManyToOne
-	@JoinColumn(name="personne_id", referencedColumnName="id_personne")
+	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")
 	private Proprietaire proprietaire;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name="client_id", referencedColumnName="id_personne")
+	private Client client;
+	
+	@ManyToMany
 	@JoinTable(name="visite_bien",
 		joinColumns=@JoinColumn(name="id_bien"),
 		inverseJoinColumns=@JoinColumn(name="id_visite"))
@@ -235,12 +240,26 @@ public class Bien implements Serializable {
 		this.adresse = adresse;
 	}
 
+//	/**
+//	 * @return the client
+//	 */
+//	public Client getClient() {
+//		return client;
+//	}
+
 	/**
-	 * @return the conseiller
+	 * @param client the client to set
 	 */
-	public Conseiller getConseiller() {
-		return conseiller;
+	public void setClient(Client client) {
+		this.client = client;
 	}
+
+//	/**
+//	 * @return the conseiller
+//	 */
+//	public Conseiller getConseiller() {
+//		return conseiller;
+//	}
 
 	/**
 	 * @param conseiller the conseiller to set
@@ -249,12 +268,12 @@ public class Bien implements Serializable {
 		this.conseiller = conseiller;
 	}
 
-	/**
-	 * @return the proprietaire
-	 */
-	public Proprietaire getProprietaire() {
-		return proprietaire;
-	}
+//	/**
+//	 * @return the proprietaire
+//	 */
+//	public Proprietaire getProprietaire() {
+//		return proprietaire;
+//	}
 
 	/**
 	 * @param proprietaire the proprietaire to set
@@ -277,12 +296,12 @@ public class Bien implements Serializable {
 		this.listeVisites = listeVisites;
 	}
 
-	/**
-	 * @return the classeStandard
-	 */
-	public ClasseStandard getClasseStandard() {
-		return classeStandard;
-	}
+//	/**
+//	 * @return the classeStandard
+//	 */
+//	public ClasseStandard getClasseStandard() {
+//		return classeStandard;
+//	}
 
 	/**
 	 * @param classeStandard the classeStandard to set
