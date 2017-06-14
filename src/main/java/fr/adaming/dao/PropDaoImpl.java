@@ -61,7 +61,7 @@ public class PropDaoImpl implements IPropDao {
 
 	@Override
 	public void deleteProprietaire(int id) {
-		Session s = sf.openSession();
+		Session s = sf.getCurrentSession();
 		Proprietaire p = (Proprietaire) s.get(Proprietaire.class, id);
 		s.delete(p);
 

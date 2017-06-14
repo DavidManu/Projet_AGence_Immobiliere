@@ -46,7 +46,7 @@ public class Proprietaire {
 	@Embedded
 	private Adresse adresse;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
 
