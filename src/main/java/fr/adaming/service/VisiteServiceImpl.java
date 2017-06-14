@@ -67,5 +67,4 @@ public class VisiteServiceImpl implements IVisteService {
 	public Visite getVisiteById(int id) {
 		return visiteDao.getVisiteById(id);
 	}
-
 }
