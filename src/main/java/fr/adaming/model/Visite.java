@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,44 +20,45 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-@DiscriminatorValue(value="visites")
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
-/**
- * @author INTI-0366
- *
- */
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@DiscriminatorValue(value = "visites")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Visite implements Serializable {
-	
-	//-----Attributs-----//
-	
+
+	// -----Attributs-----//
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_visite")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_visite")
 	private int id;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dateVisite;
 	private boolean clientAccepte;
 	private boolean conseillerAccepte;
-	
-	//-----Associations-----//
-	
-	@ManyToMany(mappedBy="listeVisites")
+
+	// -----Associations-----//
+
+	@ManyToMany(mappedBy = "listeVisites")
 	private List<Client> listeClients;
 	
-	@ManyToMany(mappedBy="listeVisites")
+	
+	@ManyToMany(mappedBy = "listeVisites")
 	private List<Bien> listeBiens;
 	
 	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
+	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
-	
-	//-----Constructeurs-----//
 
-	/**
-	 * 
-	 */
+	// -----Constructeurs-----//
+
 	public Visite() {
 		super();
 	}
@@ -86,8 +88,8 @@ public class Visite implements Serializable {
 		this.clientAccepte = clientAccepte;
 		this.conseillerAccepte = conseillerAccepte;
 	}
-	
-	//-----Getters et Setters-----//
+
+	// -----Getters & Setters-----//
 
 	/**
 	 * @return the id
@@ -97,7 +99,8 @@ public class Visite implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -111,7 +114,8 @@ public class Visite implements Serializable {
 	}
 
 	/**
-	 * @param clientAccepte the clientAccepte to set
+	 * @param clientAccepte
+	 *            the clientAccepte to set
 	 */
 	public void setClientAccepte(boolean clientAccepte) {
 		this.clientAccepte = clientAccepte;
@@ -125,7 +129,8 @@ public class Visite implements Serializable {
 	}
 
 	/**
-	 * @param conseillerAccepte the conseillerAccepte to set
+	 * @param conseillerAccepte
+	 *            the conseillerAccepte to set
 	 */
 	public void setConseillerAccepte(boolean conseillerAccepte) {
 		this.conseillerAccepte = conseillerAccepte;
@@ -139,7 +144,8 @@ public class Visite implements Serializable {
 	}
 
 	/**
-	 * @param dateVisite the dateVisite to set
+	 * @param dateVisite
+	 *            the dateVisite to set
 	 */
 	public void setDateVisite(Date dateVisite) {
 		this.dateVisite = dateVisite;
@@ -148,12 +154,13 @@ public class Visite implements Serializable {
 	/**
 	 * @return the listeClients
 	 */
-	public List<Client> getListeClients() {
-		return listeClients;
-	}
+	// public List<Client> getListeClients() {
+	// return listeClients;
+	// }
 
 	/**
-	 * @param listeClients the listeClients to set
+	 * @param listeClients
+	 *            the listeClients to set
 	 */
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
@@ -167,7 +174,8 @@ public class Visite implements Serializable {
 	}
 
 	/**
-	 * @param listeBiens the listeBiens to set
+	 * @param listeBiens
+	 *            the listeBiens to set
 	 */
 	public void setListeBiens(List<Bien> listeBiens) {
 		this.listeBiens = listeBiens;
@@ -181,20 +189,11 @@ public class Visite implements Serializable {
 	}
 
 	/**
-	 * @param conseiller the conseiller to set
+	 * @param conseiller
+	 *            the conseiller to set
 	 */
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
-	}
-	
-	//-----Methode String-----//
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Visite [id=" + id + ", dateVisite=" + dateVisite + "]";
 	}
 
 }

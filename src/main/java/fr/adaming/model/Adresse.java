@@ -7,12 +7,14 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 
+@Embeddable
 /**
  * @author INTI-0366
  *
  */
+
 public class Adresse implements Serializable {
 	
 	//-----Attributs-----//
@@ -42,7 +44,7 @@ public class Adresse implements Serializable {
 		this.ville = ville;
 	}
 	
-	//-----Getters et Setters-----//
+	//-----Getters & Setters-----//
 
 	/**
 	 * @return the rue

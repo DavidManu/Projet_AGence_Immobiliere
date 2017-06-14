@@ -21,13 +21,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @DiscriminatorValue(value="contrats")
-
-/**
- * @author INTI-0366
- *
- */
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Contrat implements Serializable {
 	
 	//-----Attributs-----//
@@ -43,12 +43,12 @@ public class Contrat implements Serializable {
 	private String refContrat;
 	
 	//-----Associations-----//
-	
+
 	@ManyToOne
-	@JoinColumn(name="client_id", referencedColumnName="id_personne")
+	@JoinColumn(name="client_id", referencedColumnName="id_client")
 	private Client client;
 	
-	@OneToOne(fetch=FetchType.EAGER)
+	@OneToOne
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private Bien bien;
 	
@@ -58,9 +58,7 @@ public class Contrat implements Serializable {
 	
 	//-----Constructeurs-----//
 
-	/**
-	 * 
-	 */
+	
 	public Contrat() {
 		super();
 	}
@@ -87,7 +85,7 @@ public class Contrat implements Serializable {
 		this.refContrat = refContrat;
 	}
 	
-	//-----Getters et Setters-----//
+	//-----Getters & Setters-----//
 
 	/**
 	 * @return the id
@@ -131,12 +129,12 @@ public class Contrat implements Serializable {
 		this.refContrat = refContrat;
 	}
 
-//	/**
-//	 * @return the client
-//	 */
-//	public Client getClient() {
-//		return client;
-//	}
+	/**
+	 * @return the client
+	 */
+	public Client getClient() {
+		return client;
+	}
 
 	/**
 	 * @param client the client to set
@@ -145,12 +143,12 @@ public class Contrat implements Serializable {
 		this.client = client;
 	}
 
-//	/**
-//	 * @return the bien
-//	 */
-//	public Bien getBien() {
-//		return bien;
-//	}
+	/**
+	 * @return the bien
+	 */
+	public Bien getBien() {
+		return bien;
+	}
 
 	/**
 	 * @param bien the bien to set
@@ -159,12 +157,12 @@ public class Contrat implements Serializable {
 		this.bien = bien;
 	}
 
-//	/**
-//	 * @return the conseiller
-//	 */
-//	public Conseiller getConseiller() {
-//		return conseiller;
-//	}
+	/**
+	 * @return the conseiller
+	 */
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
 
 	/**
 	 * @param conseiller the conseiller to set
@@ -173,14 +171,6 @@ public class Contrat implements Serializable {
 		this.conseiller = conseiller;
 	}
 	
-	//-----Methode String-----//
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Contrat [id=" + id + ", dateSignature=" + dateSignature + ", refContrat=" + refContrat + "]";
-	}
 
 }

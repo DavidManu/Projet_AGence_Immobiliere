@@ -6,101 +6,174 @@ package fr.adaming.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@DiscriminatorValue(value="proprietaires")
+@Table(name = "proprietaires")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+public class Proprietaire {
 
-/**
- * @author INTI-0366
- *
- */
-public class Proprietaire extends Personne {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_proprietaire")
+	private int id;
+
+	private String prenom;
+	private String nom;
+	private String numTravail;
+	private String numPrive;
+
+	// -----Associations-----//
+
+	@Embedded
+	private Adresse adresse;
 	
-	//-----Attributs-----//
+	@ManyToOne
+	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
+	private Conseiller conseiller;
+
 	
-	private String typeDeBien;
-	
-	//-----Constructeurs-----//
-	
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	private List<Bien> listeBiens;
 
 	public Proprietaire() {
 		super();
 	}
-	
-	/**
-	 * @param typeDeBien
-	 */
-	public Proprietaire(String typeDeBien) {
+
+	public Proprietaire(String prenom, String nom, String numTravail, String numPrive, Adresse adresse) {
 		super();
-		this.typeDeBien = typeDeBien;
-	}
-	
-
-	/**
-	 * @param prenom
-	 * @param nom
-	 * @param numTravail
-	 * @param numPrive
-	 * @param adresse
-	 * @param typeDeBien
-	 */
-	public Proprietaire(String prenom, String nom, String numTravail, String numPrive, Adresse adresse,
-			String typeDeBien) {
-		super(prenom, nom, numTravail, numPrive, adresse);
-		this.typeDeBien = typeDeBien;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTravail = numTravail;
+		this.numPrive = numPrive;
+		this.adresse = adresse;
 	}
 
-	/**
-	 * @param id
-	 * @param prenom
-	 * @param nom
-	 * @param numTravail
-	 * @param numPrive
-	 * @param adresse
-	 * @param typeDeBien
-	 */
-	public Proprietaire(int id, String prenom, String nom, String numTravail, String numPrive, Adresse adresse,
-			String typeDeBien) {
-		super(id, prenom, nom, numTravail, numPrive, adresse);
-		this.typeDeBien = typeDeBien;
+	public Proprietaire(int id, String prenom, String nom, String numTravail, String numPrive, Adresse adresse) {
+		super();
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTravail = numTravail;
+		this.numPrive = numPrive;
+		this.adresse = adresse;
 	}
-	
-	//-----Associations-----//
-
-	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
-	private Conseiller conseiller;
-	
-	@OneToMany(mappedBy="proprietaire", cascade=CascadeType.ALL)
-	private List<Bien> listeBiens;
-	
-	//-----Getters et Setters-----//
-
+	// -----Getters & Setters -----//
 	/**
-	 * @return the typeDeBien
+	 * @return the id
 	 */
-	public String getTypeDeBien() {
-		return typeDeBien;
+	public int getId() {
+		return id;
 	}
 
 	/**
-	 * @param typeDeBien the typeDeBien to set
+	 * @param id the id to set
 	 */
-	public void setTypeDeBien(String typeDeBien) {
-		this.typeDeBien = typeDeBien;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-//	/**
-//	 * @return the conseiller
-//	 */
-//	public Conseiller getConseiller() {
-//		return conseiller;
-//	}
+	/**
+	 * @return the prenom
+	 */
+	public String getPrenom() {
+		return prenom;
+	}
+
+	/**
+	 * @param prenom the prenom to set
+	 */
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	/**
+	 * @return the numTravail
+	 */
+	public String getNumTravail() {
+		return numTravail;
+	}
+
+	/**
+	 * @param numTravail the numTravail to set
+	 */
+	public void setNumTravail(String numTravail) {
+		this.numTravail = numTravail;
+	}
+
+	/**
+	 * @return the numPrive
+	 */
+	public String getNumPrive() {
+		return numPrive;
+	}
+
+	/**
+	 * @param numPrive the numPrive to set
+	 */
+	public void setNumPrive(String numPrive) {
+		this.numPrive = numPrive;
+	}
+
+	/**
+	 * @return the adresse
+	 */
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	/**
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	/**
+	 * @return the conseiller
+	 */
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+
+	/**
+	 * @param conseiller the conseiller to set
+	 */
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
 
 	/**
 	 * @return the listeBiens
@@ -116,21 +189,6 @@ public class Proprietaire extends Personne {
 		this.listeBiens = listeBiens;
 	}
 
-//	/**
-//	 * @param conseiller the conseiller to set
-//	 */
-//	public void setConseiller(Conseiller conseiller) {
-//		this.conseiller = conseiller;
-//	}
 	
-	//-----Methode String-----//
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Proprietaire [typeDeBien=" + typeDeBien + "]";
-	}
 
 }

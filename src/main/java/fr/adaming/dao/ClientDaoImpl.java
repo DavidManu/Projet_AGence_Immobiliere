@@ -12,8 +12,6 @@ import org.springframework.stereotype.Repository;
  * Classe d'implementation de l'interface CLient
  */
 import fr.adaming.model.Client;
-import fr.adaming.model.Conseiller;
-import fr.adaming.model.Personne;
 
 @Repository
 public class ClientDaoImpl implements IClientDao {
@@ -85,10 +83,7 @@ public class ClientDaoImpl implements IClientDao {
 		client_rec.setListeVisites(c.getListeVisites());
 		client_rec.setNom(c.getNom());
 		client_rec.setNumPrive(c.getNumPrive());
-		client_rec.setNumTravail(c.getNumTravail());
 		client_rec.setPrenom(c.getPrenom());
-		client_rec.setClasseStandard(c.getClasseStandard());
-
 		s.saveOrUpdate(client_rec);
 		return client_rec;
 

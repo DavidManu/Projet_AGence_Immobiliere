@@ -53,7 +53,6 @@ public class PropDaoImpl implements IPropDao {
 		p_rec.setPrenom(p.getPrenom());
 		p_rec.setNumPrive(p.getNumPrive());
 		p_rec.setNumTravail(p.getNumTravail());
-		p_rec.setTypeDeBien(p.getTypeDeBien());
 		p_rec.setListeBiens(p.getListeBiens());
 		p_rec.setAdresse(p.getAdresse());
 		s.saveOrUpdate(p_rec);

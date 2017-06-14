@@ -9,19 +9,23 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name="conseillers")
-
-/**
- * @author INTI-0366
- *
- */
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Conseiller implements Serializable {
 	
 	//-----Attributs-----//
@@ -36,7 +40,6 @@ public class Conseiller implements Serializable {
 	private String mail;
 	
 	//-----Constructeurs-----//
-
 	/**
 	 * 
 	 */
@@ -77,22 +80,27 @@ public class Conseiller implements Serializable {
 	
 	//-----Associations-----//
 	
+	
 	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
 	private List<Client> listeClients;
+	
 	
 	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
 	private List<Proprietaire> listeProprietaires;
 	
+	
 	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
 	private List<Bien> listeBiens;
 
+	
 	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
 	private List<Visite> listeVisites;
+	
 	
 	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
 	private List<Contrat> listeContrats;
 	
-	//-----Getters et Setters-----//
+	//-----Getters & Setters-----//
 
 	/**
 	 * @return the id
@@ -220,14 +228,6 @@ public class Conseiller implements Serializable {
 		this.listeProprietaires = listeProprietaires;
 	}
 	
-	//-----Methode String-----//
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Conseiller [id=" + id + ", identifiant=" + identifiant + ", mdp=" + mdp + "]";
-	}
+	
 
 }

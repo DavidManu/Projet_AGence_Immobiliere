@@ -8,23 +8,26 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "classesStandards")
-
-/**
- * @author INTI-0366
- *
- */
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class ClasseStandard implements Serializable {
 
 	// -----Attributs-----//
@@ -38,8 +41,12 @@ public class ClasseStandard implements Serializable {
 	private int minSurfaceMin;
 	private int dateConstructionMin;
 
-	@OneToMany(mappedBy = "classeStandard")
+	
+	@OneToMany(mappedBy = "classeStandard",fetch=FetchType.EAGER)
 	private List<Client> listeClients;
+
+	@OneToMany(mappedBy = "classeStandard", cascade = CascadeType.ALL)
+	private List<Bien> listeBiens;
 
 	// -----Constructeurs-----//
 
@@ -64,10 +71,7 @@ public class ClasseStandard implements Serializable {
 
 	// -----Associations-----//
 
-	@OneToMany(mappedBy = "classeStandard", cascade = CascadeType.ALL)
-	private List<Bien> listeBiens;
-
-	// -----Getters et Setters-----//
+	// -----Getters & Setters-----//
 
 	/**
 	 * @return the prixMin
@@ -102,9 +106,9 @@ public class ClasseStandard implements Serializable {
 	/**
 	 * @return the listeClients
 	 */
-//	public List<Client> getListeClients() {
-//		return listeClients;
-//	}
+	public List<Client> getListeClients() {
+		return listeClients;
+	}
 
 	/**
 	 * @param listeClients the listeClients to set

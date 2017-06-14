@@ -13,12 +13,13 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Bien;
 
-@Repository
+
 
 /**
  * @author INTI-0366
  *
  */
+@Repository
 public class BienDaoImpl implements IBienDao {
 	
 	@Autowired
