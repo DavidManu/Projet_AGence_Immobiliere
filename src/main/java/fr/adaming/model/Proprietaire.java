@@ -50,7 +50,7 @@ public class Proprietaire {
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
 
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "proprietaire", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Bien> listeBiens;
 
