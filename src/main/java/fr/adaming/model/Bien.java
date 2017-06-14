@@ -101,9 +101,9 @@ public class Bien implements Serializable {
 	@JoinColumn(name = "classeSt_id", referencedColumnName = "id_classeSt")
 	private ClasseStandard classeStandard;
 
-	@ManyToOne
-	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
-	private Conseiller conseiller;
+//	@ManyToOne
+//	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
+//	private Conseiller conseiller;
 
 	@ManyToOne
 	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id_proprietaire")
@@ -448,20 +448,20 @@ public class Bien implements Serializable {
 		this.classeStandard = classeStandard;
 	}
 
-	/**
-	 * @return the conseiller
-	 */
-	public Conseiller getConseiller() {
-		return conseiller;
-	}
-
-	/**
-	 * @param conseiller
-	 *            the conseiller to set
-	 */
-	public void setConseiller(Conseiller conseiller) {
-		this.conseiller = conseiller;
-	}
+//	/**
+//	 * @return the conseiller
+//	 */
+//	public Conseiller getConseiller() {
+//		return conseiller;
+//	}
+//
+//	/**
+//	 * @param conseiller
+//	 *            the conseiller to set
+//	 */
+//	public void setConseiller(Conseiller conseiller) {
+//		this.conseiller = conseiller;
+//	}
 
 	/**
 	 * @return the proprietaire

@@ -86,8 +86,8 @@ public class Conseiller implements Serializable {
 	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Proprietaire> listeProprietaires;
 
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
-	private List<Bien> listeBiens;
+//	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+//	private List<Bien> listeBiens;
 
 	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Visite> listeVisites;
@@ -172,20 +172,20 @@ public class Conseiller implements Serializable {
 		this.listeClients = listeClients;
 	}
 
-	/**
-	 * @return the listeBiens
-	 */
-	public List<Bien> getListeBiens() {
-		return listeBiens;
-	}
-
-	/**
-	 * @param listeBiens
-	 *            the listeBiens to set
-	 */
-	public void setListeBiens(List<Bien> listeBiens) {
-		this.listeBiens = listeBiens;
-	}
+//	/**
+//	 * @return the listeBiens
+//	 */
+//	public List<Bien> getListeBiens() {
+//		return listeBiens;
+//	}
+//
+//	/**
+//	 * @param listeBiens
+//	 *            the listeBiens to set
+//	 */
+//	public void setListeBiens(List<Bien> listeBiens) {
+//		this.listeBiens = listeBiens;
+//	}
 
 	/**
 	 * @return the listeVisites
