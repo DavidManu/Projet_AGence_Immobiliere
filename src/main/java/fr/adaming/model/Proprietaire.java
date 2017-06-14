@@ -51,6 +51,7 @@ public class Proprietaire {
 	private Conseiller conseiller;
 
 	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Bien> listeBiens;
 
 	public Proprietaire() {
@@ -170,8 +171,8 @@ public class Proprietaire {
 	/**
 	 * @return the conseiller
 	 */
-	public Conseiller getConseiller() {
-		return conseiller;
+	public int getConseiller() {
+		return conseiller.getId();
 	}
 
 	/**
