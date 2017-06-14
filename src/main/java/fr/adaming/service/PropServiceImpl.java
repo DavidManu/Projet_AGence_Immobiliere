@@ -56,4 +56,10 @@ public class PropServiceImpl implements IPropService {
 
 	}
 
+	@Override
+	public List<Proprietaire> getAllProprietaire() {
+		
+		return propDao.getAllProprietaire();
+	}
+
 }

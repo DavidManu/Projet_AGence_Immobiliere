@@ -55,4 +55,10 @@ public class PropRestController {
 		propService.deleteProprietaire(id);
 
 	}
+	
+	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
+	public List<Proprietaire> getAllProp() {
+
+		return propService.getAllProprietaire();
+	}
 }

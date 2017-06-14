@@ -19,4 +19,5 @@ public interface IPropDao {
 		
 	public void deleteProprietaire (int id);	
 
+	public List<Proprietaire > getAllProprietaire ();
 }

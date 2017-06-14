@@ -67,4 +67,12 @@ public class PropDaoImpl implements IPropDao {
 
 	}
 
+	@Override
+	public List<Proprietaire> getAllProprietaire() {
+		Session s = sf.openSession();
+		String getAll = "FROM Proprietaire";
+		Query query = s.createQuery(getAll);
+		return query.list();
+	}
+
 }
