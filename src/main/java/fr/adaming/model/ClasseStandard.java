@@ -41,11 +41,12 @@ public class ClasseStandard implements Serializable {
 	private int minSurfaceMin;
 	private int dateConstructionMin;
 
-	
-	@OneToMany(mappedBy = "classeStandard",fetch=FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(mappedBy = "classeStandard")
 	private List<Client> listeClients;
 
-	@OneToMany(mappedBy = "classeStandard", cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(mappedBy = "classeStandard")
 	private List<Bien> listeBiens;
 
 	// -----Constructeurs-----//

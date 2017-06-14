@@ -24,22 +24,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name="conseillers")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+@Table(name = "conseillers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Conseiller implements Serializable {
-	
-	//-----Attributs-----//
-	
+
+	// -----Attributs-----//
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_conseiller")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_conseiller")
 	private int id;
-	
+
 	private String identifiant;
 	private String mdp;
 	private String mail;
-	
-	//-----Constructeurs-----//
+
+	// -----Constructeurs-----//
 	/**
 	 * 
 	 */
@@ -77,30 +77,25 @@ public class Conseiller implements Serializable {
 		this.listeClients = listeClients;
 		this.listeProprietaires = listeProprietaires;
 	}
-	
-	//-----Associations-----//
-	
-	
-	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
+
+	// -----Associations-----//
+
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Client> listeClients;
-	
-	
-	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Proprietaire> listeProprietaires;
-	
-	
-	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Bien> listeBiens;
 
-	
-	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Visite> listeVisites;
-	
-	
-	@OneToMany(mappedBy="conseiller", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Contrat> listeContrats;
-	
-	//-----Getters & Setters-----//
+
+	// -----Getters & Setters-----//
 
 	/**
 	 * @return the id
@@ -110,7 +105,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -124,7 +120,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param identifiant the identifiant to set
+	 * @param identifiant
+	 *            the identifiant to set
 	 */
 	public void setIdentifiant(String identifiant) {
 		this.identifiant = identifiant;
@@ -138,7 +135,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param mdp the mdp to set
+	 * @param mdp
+	 *            the mdp to set
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
@@ -152,7 +150,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param mail the mail to set
+	 * @param mail
+	 *            the mail to set
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
@@ -166,7 +165,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param listeClients the listeClients to set
+	 * @param listeClients
+	 *            the listeClients to set
 	 */
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
@@ -180,7 +180,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param listeBiens the listeBiens to set
+	 * @param listeBiens
+	 *            the listeBiens to set
 	 */
 	public void setListeBiens(List<Bien> listeBiens) {
 		this.listeBiens = listeBiens;
@@ -194,7 +195,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param listeVisites the listeVisites to set
+	 * @param listeVisites
+	 *            the listeVisites to set
 	 */
 	public void setListeVisites(List<Visite> listeVisites) {
 		this.listeVisites = listeVisites;
@@ -208,7 +210,8 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param listeContrats the listeContrats to set
+	 * @param listeContrats
+	 *            the listeContrats to set
 	 */
 	public void setListeContrats(List<Contrat> listeContrats) {
 		this.listeContrats = listeContrats;
@@ -222,12 +225,11 @@ public class Conseiller implements Serializable {
 	}
 
 	/**
-	 * @param listeProprietaires the listeProprietaires to set
+	 * @param listeProprietaires
+	 *            the listeProprietaires to set
 	 */
 	public void setListeProprietaires(List<Proprietaire> listeProprietaires) {
 		this.listeProprietaires = listeProprietaires;
 	}
-	
-	
 
 }

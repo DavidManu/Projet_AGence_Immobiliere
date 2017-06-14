@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @DiscriminatorValue(value = "visites")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Visite implements Serializable {
 
 	// -----Attributs-----//
@@ -46,13 +46,14 @@ public class Visite implements Serializable {
 
 	// -----Associations-----//
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "listeVisites")
 	private List<Client> listeClients;
-	
-	
+
+	@JsonIgnore
 	@ManyToMany(mappedBy = "listeVisites")
 	private List<Bien> listeBiens;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
@@ -154,9 +155,9 @@ public class Visite implements Serializable {
 	/**
 	 * @return the listeClients
 	 */
-	// public List<Client> getListeClients() {
-	// return listeClients;
-	// }
+	public List<Client> getListeClients() {
+		return listeClients;
+	}
 
 	/**
 	 * @param listeClients
@@ -184,8 +185,8 @@ public class Visite implements Serializable {
 	/**
 	 * @return the conseiller
 	 */
-	public Conseiller getConseiller() {
-		return conseiller;
+	public int getConseiller() {
+		return conseiller.getId();
 	}
 
 	/**

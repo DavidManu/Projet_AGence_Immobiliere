@@ -132,8 +132,8 @@ public class Contrat implements Serializable {
 	/**
 	 * @return the client
 	 */
-	public Client getClient() {
-		return client;
+	public int getClient() {
+		return client.getId();
 	}
 
 	/**
@@ -146,8 +146,8 @@ public class Contrat implements Serializable {
 	/**
 	 * @return the bien
 	 */
-	public Bien getBien() {
-		return bien;
+	public int getBien() {
+		return bien.getId();
 	}
 
 	/**
@@ -160,8 +160,8 @@ public class Contrat implements Serializable {
 	/**
 	 * @return the conseiller
 	 */
-	public Conseiller getConseiller() {
-		return conseiller;
+	public int getConseiller() {
+		return conseiller.getId();
 	}
 
 	/**

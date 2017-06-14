@@ -31,8 +31,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-
-
 /**
  * @author INTI-0366
  *
@@ -40,7 +38,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "clients")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Client {
 
 	// -----Attributs-----//
@@ -57,23 +55,19 @@ public class Client {
 
 	@Embedded
 	private Adresse adresse;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "classeSt_id", referencedColumnName = "id_classeSt")
 	private ClasseStandard classeStandard;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
-
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "client_visite", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "id_visite"))
 	private List<Visite> listeVisites;
 
-	
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Contrat> listeContrats;
 
