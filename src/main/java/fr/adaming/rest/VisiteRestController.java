@@ -54,7 +54,7 @@ public class VisiteRestController {
 		visiteService.deleteVisite(id);
 	}
 	
-	@RequestMapping(value = "/visite/{pId}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/visite/{vId}", method = RequestMethod.GET, produces = "application/json")
 	public Visite getVisiteById(@PathVariable("vId") int id) {
 		return visiteService.getVisiteById(id);
 	}
