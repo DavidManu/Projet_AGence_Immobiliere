@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "proprietaires")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Proprietaire {
 
 	@Id
@@ -45,12 +45,11 @@ public class Proprietaire {
 
 	@Embedded
 	private Adresse adresse;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
 
-	
 	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	private List<Bien> listeBiens;
 
@@ -76,6 +75,7 @@ public class Proprietaire {
 		this.numPrive = numPrive;
 		this.adresse = adresse;
 	}
+
 	// -----Getters & Setters -----//
 	/**
 	 * @return the id
@@ -85,7 +85,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -99,7 +100,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param prenom the prenom to set
+	 * @param prenom
+	 *            the prenom to set
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
@@ -113,7 +115,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * @param nom
+	 *            the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -127,7 +130,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param numTravail the numTravail to set
+	 * @param numTravail
+	 *            the numTravail to set
 	 */
 	public void setNumTravail(String numTravail) {
 		this.numTravail = numTravail;
@@ -141,7 +145,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param numPrive the numPrive to set
+	 * @param numPrive
+	 *            the numPrive to set
 	 */
 	public void setNumPrive(String numPrive) {
 		this.numPrive = numPrive;
@@ -155,7 +160,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param adresse the adresse to set
+	 * @param adresse
+	 *            the adresse to set
 	 */
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
@@ -169,7 +175,8 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param conseiller the conseiller to set
+	 * @param conseiller
+	 *            the conseiller to set
 	 */
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
@@ -183,12 +190,11 @@ public class Proprietaire {
 	}
 
 	/**
-	 * @param listeBiens the listeBiens to set
+	 * @param listeBiens
+	 *            the listeBiens to set
 	 */
 	public void setListeBiens(List<Bien> listeBiens) {
 		this.listeBiens = listeBiens;
 	}
-
-	
 
 }
