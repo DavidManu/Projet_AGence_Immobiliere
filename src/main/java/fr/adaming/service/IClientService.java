@@ -19,7 +19,9 @@ public interface IClientService {
 	
 	public Client updateClient(Client c);
 		
-	public void deleteClient(int id);	
+	public void deleteClient(int id);
+	
+	public List<Client> getAllClient ();
 	
 
 }

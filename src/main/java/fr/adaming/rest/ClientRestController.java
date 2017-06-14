@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IClientService;
 
 @RestController
@@ -65,6 +66,12 @@ public class ClientRestController {
 
 		return clientService.updateClient(c);
 
+	}
+
+	@RequestMapping(value = "/liste2", method = RequestMethod.GET, produces = "application/json")
+	public List<Client> getAllClient() {
+
+		return clientService.getAllClient();
 	}
 
 }

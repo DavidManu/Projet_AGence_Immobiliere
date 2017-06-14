@@ -100,4 +100,12 @@ public class ClientDaoImpl implements IClientDao {
 
 	}
 
+	@Override
+	public List<Client> getAllClient() {
+		Session s = sf.openSession();
+		String getAll = "FROM Client";
+		Query query = s.createQuery(getAll);
+		return query.list();
+	}
+
 }
