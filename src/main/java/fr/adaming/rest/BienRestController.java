@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import fr.adaming.model.Bien;
 import fr.adaming.model.Client;
@@ -64,9 +66,8 @@ public class BienRestController {
 		return biService.getAllPropertyByCustomerAndAdviser(idcl, idco);
 	}
 	
-	@RequestMapping(value="/Bien", method=RequestMethod.GET, produces="application/json")
-	public Bien getPropertyByID(@RequestParam("pId") int id){
-		System.out.println();
+	@RequestMapping(value="/Bien", method=RequestMethod.GET,  produces="application/json")
+	public Bien getPropertyByID(@RequestParam("pId") int id) {
 		return biService.getPropertyByID(id);
 	}
 	

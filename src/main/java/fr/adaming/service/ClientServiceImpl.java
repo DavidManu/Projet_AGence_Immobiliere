@@ -85,4 +85,9 @@ public class ClientServiceImpl implements IClientService {
 
 	}
 
+	@Override
+	public List<Client> getAllClient() {
+		return clientDao.getAllClient();
+	}
+
 }

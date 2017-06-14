@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.adaming.model.Conseiller;
+
 import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IPropService;
 
@@ -54,5 +54,11 @@ public class PropRestController {
 
 		propService.deleteProprietaire(id);
 
+	}
+	
+	@RequestMapping(value = "/liste2", method = RequestMethod.GET, produces = "application/json")
+	public List<Proprietaire> getAllProp() {
+
+		return propService.getAllProprietaire();
 	}
 }

@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "classesStandards")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class ClasseStandard implements Serializable {
 
 	// -----Attributs-----//
@@ -36,7 +36,7 @@ public class ClasseStandard implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_classeSt")
 	private int id;
-
+	private String type;
 	private int prixMin;
 	private int minSurfaceMin;
 	private int dateConstructionMin;
@@ -63,11 +63,12 @@ public class ClasseStandard implements Serializable {
 	 * @param minSurfaceMin
 	 * @param dateConstructionMin
 	 */
-	public ClasseStandard(int prixMin, int minSurfaceMin, int dateConstructionMin) {
+	public ClasseStandard(String type, int prixMin, int minSurfaceMin, int dateConstructionMin) {
 		super();
 		this.prixMin = prixMin;
 		this.minSurfaceMin = minSurfaceMin;
 		this.dateConstructionMin = dateConstructionMin;
+		this.type = type;
 	}
 
 	// -----Associations-----//
@@ -112,7 +113,8 @@ public class ClasseStandard implements Serializable {
 	}
 
 	/**
-	 * @param listeClients the listeClients to set
+	 * @param listeClients
+	 *            the listeClients to set
 	 */
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
@@ -161,6 +163,21 @@ public class ClasseStandard implements Serializable {
 	 */
 	public void setDateConstructionMin(int dateConstructionMin) {
 		this.dateConstructionMin = dateConstructionMin;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

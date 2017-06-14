@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Proprietaire;
 
 public interface IClientDao {
 	
@@ -21,7 +22,7 @@ public interface IClientDao {
 		
 	public void deleteClient(int id);	
 	
-	
+	public List<Client> getAllClient ();
 
 
 }

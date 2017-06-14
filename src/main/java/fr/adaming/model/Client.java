@@ -65,10 +65,12 @@ public class Client {
 	private Conseiller conseiller;
 
 	@ManyToMany(cascade = CascadeType.ALL)
+	@JsonIgnore
 	@JoinTable(name = "client_visite", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "id_visite"))
 	private List<Visite> listeVisites;
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Contrat> listeContrats;
 
 	// -----Constructeurs-----//
@@ -169,8 +171,8 @@ public class Client {
 	/**
 	 * @return the conseiller
 	 */
-	public Conseiller getConseiller() {
-		return conseiller;
+	public int getConseiller() {
+		return conseiller.getId();
 	}
 
 	/**

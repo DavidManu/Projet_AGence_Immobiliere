@@ -16,5 +16,7 @@ public interface IPropService {
 	public Proprietaire updateProprietaire(Proprietaire p);
 
 	public void deleteProprietaire(int id);
+	
+	public List<Proprietaire> getAllProprietaire();
 
 }
