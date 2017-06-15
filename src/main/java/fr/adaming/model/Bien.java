@@ -27,6 +27,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -116,8 +117,8 @@ public class Bien implements Serializable {
 	@JoinColumn(name = "client_id", referencedColumnName = "id_client")
 	private Client client;
 
-	@ManyToMany
-	@JoinTable(name = "visite_bien", joinColumns = @JoinColumn(name = "id_bien"), inverseJoinColumns = @JoinColumn(name = "id_visite"))
+	@OneToMany(mappedBy="bien", cascade=CascadeType.REMOVE)
+	@JsonIgnore
 	private List<Visite> listeVisites;
 
 	@OneToOne(mappedBy = "bien")

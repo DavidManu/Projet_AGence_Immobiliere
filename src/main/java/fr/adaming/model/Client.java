@@ -64,9 +64,8 @@ public class Client {
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
 
-	@ManyToMany(cascade = CascadeType.ALL)
 	@JsonIgnore
-	@JoinTable(name = "client_visite", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "id_visite"))
+	@OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
 	private List<Visite> listeVisites;
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)

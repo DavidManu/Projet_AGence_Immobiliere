@@ -43,16 +43,17 @@ public class Visite implements Serializable {
 	private Date dateVisite;
 	private boolean clientAccepte;
 	private boolean conseillerAccepte;
+	private String chemin;
 
 	// -----Associations-----//
 
-	@JsonIgnore
-	@ManyToMany(mappedBy = "listeVisites")
-	private List<Client> listeClients;
+	@ManyToOne
+	@JoinColumn(name="client_id", referencedColumnName="id_client")
+	private Client client;
 
-	@JsonIgnore
-	@ManyToMany(mappedBy = "listeVisites")
-	private List<Bien> listeBiens;
+	@ManyToOne
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	private Bien bien;
 
 	@ManyToOne
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
@@ -69,11 +70,12 @@ public class Visite implements Serializable {
 	 * @param clientAccepte
 	 * @param conseillerAccepte
 	 */
-	public Visite(Date dateVisite, boolean clientAccepte, boolean conseillerAccepte) {
+	public Visite(Date dateVisite, boolean clientAccepte, boolean conseillerAccepte, String chemin) {
 		super();
 		this.dateVisite = dateVisite;
 		this.clientAccepte = clientAccepte;
 		this.conseillerAccepte = conseillerAccepte;
+		this.chemin=chemin;
 	}
 
 	/**
@@ -82,12 +84,13 @@ public class Visite implements Serializable {
 	 * @param clientAccepte
 	 * @param conseillerAccepte
 	 */
-	public Visite(int id, Date dateVisite, boolean clientAccepte, boolean conseillerAccepte) {
+	public Visite(int id, Date dateVisite, boolean clientAccepte, boolean conseillerAccepte, String chemin) {
 		super();
 		this.id = id;
 		this.dateVisite = dateVisite;
 		this.clientAccepte = clientAccepte;
 		this.conseillerAccepte = conseillerAccepte;
+		this.chemin=chemin;
 	}
 
 	// -----Getters & Setters-----//
@@ -152,34 +155,36 @@ public class Visite implements Serializable {
 		this.dateVisite = dateVisite;
 	}
 
+	
+
 	/**
-	 * @return the listeClients
+	 * @return the client
 	 */
-	public List<Client> getListeClients() {
-		return listeClients;
+	public Client getClient() {
+		return client;
 	}
 
 	/**
-	 * @param listeClients
-	 *            the listeClients to set
+	 * @param client the client to set
 	 */
-	public void setListeClients(List<Client> listeClients) {
-		this.listeClients = listeClients;
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	
+
+	/**
+	 * @return the bien
+	 */
+	public Bien getBien() {
+		return bien;
 	}
 
 	/**
-	 * @return the listeBiens
+	 * @param bien the bien to set
 	 */
-	public List<Bien> getListeBiens() {
-		return listeBiens;
-	}
-
-	/**
-	 * @param listeBiens
-	 *            the listeBiens to set
-	 */
-	public void setListeBiens(List<Bien> listeBiens) {
-		this.listeBiens = listeBiens;
+	public void setBien(Bien bien) {
+		this.bien = bien;
 	}
 
 	/**
@@ -196,5 +201,20 @@ public class Visite implements Serializable {
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
+
+	/**
+	 * @return the chemin
+	 */
+	public String getChemin() {
+		return chemin;
+	}
+
+	/**
+	 * @param chemin the chemin to set
+	 */
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+	
 
 }

@@ -78,19 +78,19 @@ public class Conseiller implements Serializable {
 
 	// -----Associations-----//
 
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "conseiller")
 	private List<Client> listeClients;
 
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "conseiller")
 	private List<Proprietaire> listeProprietaires;
 
 //	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 //	private List<Bien> listeBiens;
 
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "conseiller")
 	private List<Visite> listeVisites;
 
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "conseiller")
 	private List<Contrat> listeContrats;
 
 	// -----Getters & Setters-----//
