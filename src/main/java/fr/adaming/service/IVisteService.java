@@ -28,5 +28,5 @@ public interface IVisteService {
 
 	public Visite getVisiteById(int id);
 
-	void createOnePDF(Conseiller c);
+	
 }

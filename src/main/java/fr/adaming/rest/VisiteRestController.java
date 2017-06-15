@@ -6,6 +6,7 @@ package fr.adaming.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,9 @@ public class VisiteRestController {
 
 	@Autowired
 	private IVisteService visiteService;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 
 	/**
 	 * @param visiteService the visiteService to set
@@ -33,7 +37,30 @@ public class VisiteRestController {
 	public void setVisiteService(IVisteService visiteService) {
 		this.visiteService = visiteService;
 	}
-	
+	/**
+	 * @return the mailSender
+	 */
+	public JavaMailSender getMailSender() {
+		return mailSender;
+	}
+
+
+	/**
+	 * @param mailSender the mailSender to set
+	 */
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
+	}
+
+
+	/**
+	 * @return the visiteService
+	 */
+	public IVisteService getVisiteService() {
+		return visiteService;
+	}
+
+
 	@RequestMapping(value="/ajout", method=RequestMethod.POST, produces="application/json", consumes="application/json")
 	public Visite addVisite(@RequestBody Visite v){
 		return visiteService.createVisite(v);

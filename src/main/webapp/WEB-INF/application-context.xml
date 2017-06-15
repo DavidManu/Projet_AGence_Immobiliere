@@ -38,6 +38,20 @@
 		<property name="sessionFactory" ref="sessionFactoryBean" />
 	</bean>
 
+	<bean id="mailSenderBean" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="username" value="martin23121991@gmail.com"></property>
+		<property name="password" value="wwjh]x23"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
 	<tx:annotation-driven transaction-manager="transactionManagerBean" />
 
 </beans>
