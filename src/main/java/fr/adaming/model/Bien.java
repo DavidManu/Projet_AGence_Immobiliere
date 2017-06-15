@@ -64,6 +64,8 @@ public class Bien implements Serializable {
 
 	private String image;
 
+	private String video;
+
 	// Maison Appartement ......
 	private String type;
 
@@ -101,9 +103,10 @@ public class Bien implements Serializable {
 	@JoinColumn(name = "classeSt_id", referencedColumnName = "id_classeSt")
 	private ClasseStandard classeStandard;
 
-//	@ManyToOne
-//	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
-//	private Conseiller conseiller;
+	// @ManyToOne
+	// @JoinColumn(name = "conseiller_id", referencedColumnName =
+	// "id_conseiller")
+	// private Conseiller conseiller;
 
 	@ManyToOne
 	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id_proprietaire")
@@ -131,7 +134,7 @@ public class Bien implements Serializable {
 
 	public Bien(Date dateDispo, Date dateMEL, String statut, byte[] photo, String type, boolean genre, String cadastre,
 			double superficie, double caution, double loyer, double charges, String garniture, String typeBail,
-			double prix, String etat, Adresse adresse, String image) {
+			double prix, String etat, Adresse adresse, String image, String video) {
 		super();
 		this.dateDispo = dateDispo;
 		this.dateMEL = dateMEL;
@@ -150,11 +153,12 @@ public class Bien implements Serializable {
 		this.etat = etat;
 		this.adresse = adresse;
 		this.image = image;
+		this.video = video;
 	}
 
 	public Bien(int id, Date dateDispo, Date dateMEL, String statut, byte[] photo, String type, boolean genre,
 			String cadastre, double superficie, double caution, double loyer, double charges, String garniture,
-			String typeBail, double prix, String etat, Adresse adresse, String image) {
+			String typeBail, double prix, String etat, Adresse adresse, String image, String video) {
 		super();
 		this.id = id;
 		this.dateDispo = dateDispo;
@@ -174,6 +178,7 @@ public class Bien implements Serializable {
 		this.etat = etat;
 		this.adresse = adresse;
 		this.image = image;
+		this.video = video;
 	}
 
 	// -----Getters & Setters-----//
@@ -191,6 +196,21 @@ public class Bien implements Serializable {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the video
+	 */
+	public String getVideo() {
+		return video;
+	}
+
+	/**
+	 * @param video
+	 *            the video to set
+	 */
+	public void setVideo(String video) {
+		this.video = video;
 	}
 
 	/**
