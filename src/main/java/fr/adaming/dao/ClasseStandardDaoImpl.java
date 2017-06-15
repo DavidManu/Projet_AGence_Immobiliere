@@ -57,4 +57,28 @@ public class ClasseStandardDaoImpl implements IClasseStandardDao {
 		return cs_rec;
 	}
 
+
+	@Override
+	public void createClasseStandard(ClasseStandard c) {
+		Session s=sf.openSession();
+		s.save(c);
+	}
+
+
+	@Override
+	public void updateClasseStandard(ClasseStandard c) {
+		Session s=sf.getCurrentSession();
+		ClasseStandard c_rec=(ClasseStandard) s.get(ClasseStandard.class, c.getId());
+		c_rec=c;
+		s.merge(c_rec);
+	}
+
+
+	@Override
+	public void deleteCLasseStandard(int id) {
+		Session s=sf.getCurrentSession();
+		ClasseStandard c_rec=(ClasseStandard) s.get(ClasseStandard.class, id);
+		s.delete(c_rec);
+	}
+
 }

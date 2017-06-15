@@ -85,14 +85,6 @@ public class BienRestController {
 	
 	@RequestMapping(value="/deleteBien", method=RequestMethod.DELETE, produces="application/json")
 	public void deleteProperty(@RequestParam("pId") int id){
-//		Bien b=biService.getPropertyByID(id);
-//		Client cl=new Client();
-//		Proprietaire p=new Proprietaire();
-//		Conseiller co=new Conseiller();
-//		b.setClient(cl);
-//		b.setProprietaire(p);
-//		b.setConseiller(co);
-//		biService.updateProperty(b);
 		biService.deleteProperty(id);
 	}
 

@@ -19,4 +19,7 @@ public interface IClasseStandardDao {
 	
 	public List<ClasseStandard> getAllClasseStandard();
 	public ClasseStandard getClasseStandardById(int id);
+	public void createClasseStandard(ClasseStandard c);
+	public void updateClasseStandard(ClasseStandard c);
+	public void deleteCLasseStandard(int id);
 }

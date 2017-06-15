@@ -48,4 +48,19 @@ public class ClasseStandardServiceImpl implements IClasseStandardService {
 		return csDao.getClasseStandardById(id);
 	}
 
+	@Override
+	public void createClasseStandard(ClasseStandard c) {
+		csDao.createClasseStandard(c);
+	}
+
+	@Override
+	public void updateClasseStandard(ClasseStandard c) {
+		csDao.updateClasseStandard(c);
+	}
+
+	@Override
+	public void deleteCLasseStandard(int id) {
+		csDao.deleteCLasseStandard(id);
+	}
+
 }

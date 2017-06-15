@@ -43,4 +43,21 @@ public class ClasseStandardRestController {
 	public ClasseStandard getClasseStandardById(@PathVariable("csId") int id) {
 		return csService.getClasseStandardById(id);
 	}
+	
+	@RequestMapping(value = "/createclassestandard", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+	public ClasseStandard createClasseStandard(@RequestBody ClasseStandard cs) {
+		csService.createClasseStandard(cs);
+		return cs;
+	}
+	
+	@RequestMapping(value = "/updateclassestandard", method = RequestMethod.PUT, produces = "application/json", consumes="application/json")
+	public ClasseStandard updateClasseStandard(@RequestBody ClasseStandard cs) {
+		csService.updateClasseStandard(cs);
+		return cs;
+	}
+	
+	@RequestMapping(value = "/deleteclassestandard/{csId}", method = RequestMethod.DELETE, produces = "application/json")
+	public void deleteClasseStandard(@PathVariable("csId") int id) {
+		csService.deleteCLasseStandard(id);
+	}
 }
