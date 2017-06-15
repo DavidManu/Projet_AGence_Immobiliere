@@ -154,7 +154,7 @@ public class BienRestController {
 		biService.deleteProperty(id);
 	}
 
-	@RequestMapping(value = "/Biens", method = RequestMethod.POST)
+	@RequestMapping(value = "/GenerateMail", method = RequestMethod.POST)
 	public String genererMail() {
 
 		// Demande de rendez vous
