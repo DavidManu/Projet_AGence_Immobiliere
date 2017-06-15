@@ -44,8 +44,8 @@ public class BienServiceImpl implements IBienService {
 	}
 
 	@Override
-	public List<Bien> getAllPropertyByAdviser(int id_co) {
-		return biDAO.getAllPropertyByAdviser(id_co);
+	public List<Bien> getAllPropertyByCategory(int id_ca) {
+		return biDAO.getAllPropertyByCategory(id_ca);
 	}
 
 	@Override

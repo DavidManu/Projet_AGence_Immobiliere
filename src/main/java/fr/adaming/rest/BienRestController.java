@@ -51,13 +51,13 @@ public class BienRestController {
 		return biService.getAllProperty();
 	}
 	
-	@RequestMapping(value="/BiensIDad", method=RequestMethod.GET, produces="application/json")
-	public List<Bien> getAllPropertyByAdviser(@RequestParam("pId") int id){
-		return biService.getAllPropertyByAdviser(id);
+	@RequestMapping(value="/BiensIDca", method=RequestMethod.GET, produces="application/json")
+	public List<Bien> getAllPropertyByCategory(@RequestParam("pId") int id){
+		return biService.getAllPropertyByCategory(id);
 	}
 	
 	@RequestMapping(value="/BiensIDowad", method=RequestMethod.GET, produces="application/json")
-	public List<Bien> getAllPropertyByOwnerAndAdviser(@RequestParam("pIdp") int idp, @RequestParam("pIdco") int idco){
+	public List<Bien> getAllPropertyByOwnerAndAdviser(@RequestParam("pIdca") int idp, @RequestParam("pIdco") int idco){
 		return biService.getAllPropertyByOwnerAndAdviser(idp, idco);
 	}
 	

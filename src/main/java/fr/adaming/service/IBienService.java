@@ -14,7 +14,7 @@ import fr.adaming.model.Bien;
 public interface IBienService {
 	
 	public List<Bien> getAllProperty();
-	public List<Bien> getAllPropertyByAdviser(int id_co);
+	public List<Bien> getAllPropertyByCategory(int id_ca);
 	public List<Bien> getAllPropertyByOwnerAndAdviser(int id_pr, int id_co);
 	public List<Bien> getAllPropertyByCustomerAndAdviser(int id_pr, int id_cl);
 	

@@ -42,11 +42,11 @@ public class BienDaoImpl implements IBienDao {
 	}
 
 	@Override
-	public List<Bien> getAllPropertyByAdviser(int id_co) {
+	public List<Bien> getAllPropertyByCategory(int id_ca) {
 		Session s=sf.openSession();
-		String req="from Bien as b where b.conseiller.id=:pIdco";
+		String req="from Bien as b where b.classeStandard.id=:pIdca";
 		Query query=s.createQuery(req);
-		query.setParameter("pIdco", id_co);
+		query.setParameter("pIdca", id_ca);
 		return query.list();
 	}
 
