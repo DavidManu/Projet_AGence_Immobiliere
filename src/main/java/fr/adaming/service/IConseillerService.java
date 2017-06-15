@@ -1,9 +1,11 @@
 package fr.adaming.service;
 
+import java.util.List;
+
 import fr.adaming.model.Conseiller;
 
 public interface IConseillerService {
 	
-	public Conseiller isExist(Conseiller conseiller);
+	public List<Conseiller> listeConseiller();
 
 }

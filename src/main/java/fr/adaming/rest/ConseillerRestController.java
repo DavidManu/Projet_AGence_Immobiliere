@@ -1,5 +1,7 @@
 package fr.adaming.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import fr.adaming.model.Conseiller;
 import fr.adaming.service.IConseillerService;
 
 @RestController
+@RequestMapping("/conseillerWS")
 public class ConseillerRestController {
 	
 	@Autowired
@@ -23,9 +26,9 @@ public class ConseillerRestController {
 		this.conseillerService = conseillerService;
 	}
 	
-	@RequestMapping(value = "/conseiller", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
-	public Conseiller seConnecter (@RequestBody Conseiller conseiller){
-		return conseillerService.isExist(conseiller);
+	@RequestMapping(value = "/conseillers", method=RequestMethod.GET, produces="application/json")
+	public List<Conseiller> listeConseillers(){
+		return conseillerService.listeConseiller();
 	};
 	
 	

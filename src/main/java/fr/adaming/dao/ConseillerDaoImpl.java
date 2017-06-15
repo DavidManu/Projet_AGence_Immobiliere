@@ -1,5 +1,7 @@
 package fr.adaming.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,17 +21,11 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	}
 	
 	@Override
-	public Conseiller isExist(Conseiller conseiller) {
-		Session s = sf.getCurrentSession();
-		String req = "FROM Conseiller conseiller WHERE conseiller.mail=:pmail and conseiller.mdp=:pmdp";
-		Query query = s.createQuery(req);
-		query.setParameter("pmail", conseiller.getMail());
-		query.setParameter("pmdp", conseiller.getMdp());
-
-		Conseiller conseiller_rec = (Conseiller) query.uniqueResult();
-
-		return conseiller_rec;
-
+	public List<Conseiller> listeConseiller() {
+		Session s=sf.openSession();
+		String req="from Conseiller";
+		Query query=s.createQuery(req);
+		return query.list();
 	}
 
 }

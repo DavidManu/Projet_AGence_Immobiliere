@@ -1,5 +1,7 @@
 package fr.adaming.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +21,9 @@ public class ConseillerServiceImpl implements IConseillerService {
 	}
 
 	@Override
-	public Conseiller isExist(Conseiller conseiller) {
+	public List<Conseiller> listeConseiller() {
 		
-		return conseillerDao.isExist(conseiller);
+		return conseillerDao.listeConseiller();
 	}
 
 }
